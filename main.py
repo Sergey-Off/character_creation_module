@@ -1,7 +1,22 @@
 from random import randint
 
+from graphic_arts.start_game_banner import run_screensaver
+
 
 def attack(char_name: str, char_class: str) -> str:
+    """Документация модуля.
+    Функция принимает имя персонажа и его класс и
+    возвращает строку с описанием урона, который персонаж нанёс противнику.
+
+    :param char_name: имя персонажа
+    :type char_name: str
+
+    :param char_class: класс персонажа (warrior, mage или healer)
+    :type char_class: str
+
+    :return: строка с описанием урона, который персонаж нанёс противнику
+    :rtype: str
+    """
     if char_class == 'warrior':
         return (f'{char_name} '
                 f'нанёс урон противнику равный {5 + randint(3, 5)}')
@@ -16,6 +31,19 @@ def attack(char_name: str, char_class: str) -> str:
 
 
 def defence(char_name: str, char_class: str) -> str:
+    """Документация модуля.
+    Функция принимает имя персонажа и его класс и
+    возвращает строку с описанием блокированного урона.
+
+    :param char_name: имя персонажа
+    :type char_name: str
+
+    :param char_class: класс персонажа (warrior, mage или healer)
+    :type char_class: str
+
+    :return: строка с описанием блокированного урона
+    :rtype: str
+    """
     if char_class == 'warrior':
         return (f'{char_name} блокировал {10 + randint(5, 10)} урона')
     if char_class == 'mage':
@@ -26,6 +54,19 @@ def defence(char_name: str, char_class: str) -> str:
 
 
 def special(char_name: str, char_class: str) -> str:
+    """Документация модуля.
+    Функция принимает имя персонажа и его класс и
+    возвращает строку с описанием специального умения персонажа.
+
+    :param char_name: имя персонажа.
+    :type char_name: str
+
+    :param char_class: класс персонажа.
+    :type char_class: str
+
+    :return: строка с описанием специального умения персонажа.
+    :rtype: str
+    """
     if char_class == 'warrior':
         return (f'{char_name} '
                 f'применил специальное умение «Выносливость {80 + 25}»')
@@ -37,6 +78,19 @@ def special(char_name: str, char_class: str) -> str:
 
 
 def start_training(char_name: str, char_class: str) -> str:
+    """Документация модуля.
+    Функция принимает имя персонажа и его класс и
+    возвращает строку с описанием специального умения персонажа.
+
+    :param char_name: имя персонажа.
+    :type char_name: str
+
+    :param char_class: класс персонажа.
+    :type char_class: str
+
+    :return: строка с описанием специального умения персонажа.
+    :rtype: str
+    """
     if char_class == 'warrior':
         print(f'{char_name}, ты Воитель — отличный боец ближнего боя.')
     if char_class == 'mage':
@@ -62,6 +116,25 @@ def start_training(char_name: str, char_class: str) -> str:
 
 
 def choice_char_class() -> str:
+    """Документация модуля.
+    Функция для выбора класса персонажа игроком.
+
+    Функция предлагает пользователю выбрать один из трех классов персонажей:
+    Воитель, Маг или Лекарь.
+
+    После выбора класса, функция выводит описание выбранного класса и
+    предлагает пользователю подтвердить свой выбор.
+
+    Если пользователь подтверждает свой выбор, функция возвращает
+    название выбранного класса.
+
+    Если пользователь не подтверждает свой выбор, функция повторяет
+    процесс выбора класса.
+
+    :return: название выбранного класса персонажа
+    (warrior, mage или healer).
+    :rtype: str
+    """
     approve_choice: str = ''
     char_class: str = ''
     while approve_choice != 'y':
@@ -85,7 +158,8 @@ def choice_char_class() -> str:
     return char_class
 
 
-def main():
+if __name__ == '__main__':
+    run_screensaver()
     print('Приветствую тебя, искатель приключений!')
     print('Прежде чем начать игру...')
     char_name: str = input('...назови себя: ')
@@ -95,6 +169,3 @@ def main():
     print('Воитель, Маг, Лекарь')
     char_class: str = choice_char_class()
     print(start_training(char_name, char_class))
-
-
-main()
